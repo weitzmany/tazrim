@@ -3,18 +3,26 @@
 class Accounts extends controller {
 
     protected function init(){
-        $this->object = getContainer('Account');
+        $this->model = getContainer('Account');
     }
 
     public function new(){
 
-        $args['title'] = 'headings';
+        $args['form'] = $this->model->getForm();
+        
         return $this->view->render('/accounts/new',$args);
 
     }
 
     public function create(){
 
+    }
+
+    public function newType(){
+
+
+        return $this->view->render('/accounts/newType');
+        
     }
 
 }

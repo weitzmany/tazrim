@@ -2,7 +2,7 @@
 
 class controller {
 
-    protected $object;
+    protected $model;
     protected $view;
 
     public function __construct(){

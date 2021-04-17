@@ -9,6 +9,8 @@ class html {
         'input',
     ];
     protected $content;
+    protected $attributes;
+    protected $type;
 
     public function __construct(){
 
@@ -24,30 +26,36 @@ class html {
 
     public function tag($type, $content = '', $attributes = []){
 
-        $this->element['type'] = $type;
-        $this->element['content'] = $content;
-        $this->element['attributes'] = $attributes;
+        $this->type = $type;
+        $this->content = $content;
+        $this->attribute = $attributes;
         return $this;
 
     }
 
     function innerHTML($content){
 
-        $this->element['content'] = $content;
+        $this->content = $content;
         return $this;
 
     }
 
     function setAttribute($attr,$value = true){
 
-        $this->element['attributes'][$attr] = $value;
+        $this->attribute[$attr] = $value;
         return $this;
+
+    }
+
+    function getAttribute($attr){
+
+        return $this->attribute[$attr];
 
     }
 
     function removeAttribute($attr){
 
-        unset($this->element['attributes'][$attr]);
+        unset($this->attribute[$attr]);
         return $this;
 
     }

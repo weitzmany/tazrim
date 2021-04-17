@@ -12,6 +12,6 @@ $R->layout('base',[
 
 $R->section('content');
 
-    echo $R->v('form');
+echo 'new type';
 
 $R->stop();

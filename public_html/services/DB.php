@@ -3,7 +3,7 @@ class DB extends PDO {
 
     protected static $instance;
 
-    public static function getInstance() {
+    public static function CON() {
 
 		if(empty(self::$instance)) {
 
@@ -13,7 +13,7 @@ class DB extends PDO {
         ';dbname=' . DB_NAME;
 
 			try {
-				self::$instance = new parent($dns, DB_USER, DB_PASS);
+				self::$instance = new self($dns, DB_USER, DB_PASS);
 				self::$instance->setAttribute(parent::ATTR_ERRMODE, parent::ERRMODE_SILENT);  
 				self::$instance->query('SET NAMES utf8');
 				self::$instance->query('SET CHARACTER SET utf8');
@@ -27,8 +27,24 @@ class DB extends PDO {
 		return self::$instance;
 	}
 
-    public function __construct()
-    {
-        
-    }
+
+	public function getAll($sql){
+
+		$stmt = $this->prepare($sql);
+        $stmt->execute();
+		$results = $stmt->fetchAll(PDO::FETCH_OBJ);
+		return $results;
+
+	}
+
+	public function get($sql){
+
+		$stmt = $this->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_OBJ);
+		return $result;
+
+	}
+	
+	
 }

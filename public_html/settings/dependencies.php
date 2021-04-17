@@ -2,7 +2,7 @@
 
 $container['db'] = function($c){
     
-    return DB::getInstance();
+    return DB::CON();
     
 };
 
