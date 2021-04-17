@@ -23,3 +23,9 @@ $app->get('/accounts/type/new',function($app){
     return $app->Accounts->newType();
 
 });
+
+$app->post('/accounts/type/new',function($app){
+
+    return $app->Accounts->createType($_POST);
+
+});

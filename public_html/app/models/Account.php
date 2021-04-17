@@ -6,4 +6,10 @@ class Account extends model {
         $this->table = 'accounts';
     }
 
+    public function createType($args){
+
+        $this->db->set('account_types',$args);
+
+    }
+
 }

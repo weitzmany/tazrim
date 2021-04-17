@@ -45,6 +45,13 @@ class DB extends PDO {
 		return $result;
 
 	}
+
+	public function set($table,$args){
+		$columns = implode ("`, `", array_keys($args));
+		$values = implode (", ", array_fill ( 0 , count($args) , '?' ));
+		$sql = "INSERT INTO $table (`$columns`) VALUES ($values)";
+		$this->prepare($sql)->execute(array_values($args));
+	}
 	
 	
 }

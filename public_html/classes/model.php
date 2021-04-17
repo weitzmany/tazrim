@@ -129,6 +129,8 @@ class model {
             $form[] = $input;
             
         }
+
+        return $form;
         
 
     }

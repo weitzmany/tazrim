@@ -30,6 +30,11 @@ class view {
 
     }
 
+    public function getPart(){
+
+
+    }
+
     public function layout($path,$assets = []){
 
         $this->layout = LAYOUTS_PATH . '/' .$path . '.php';

@@ -9,7 +9,8 @@ class Accounts extends controller {
     public function new(){
 
         $args['form'] = $this->model->getForm();
-        
+        echo '<pre>';
+        print_r($args);die;
         return $this->view->render('/accounts/new',$args);
 
     }
@@ -23,6 +24,12 @@ class Accounts extends controller {
 
         return $this->view->render('/accounts/newType');
         
+    }
+
+    public function createType($args){
+
+        $this->model->createType($args);
+
     }
 
 }
