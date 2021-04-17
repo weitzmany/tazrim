@@ -12,6 +12,7 @@ class app {
 
     /**
      * build the app
+     * @param container c
      */
     public function __construct($c){
 
@@ -44,6 +45,11 @@ class app {
 
     }
 
+    /**
+     * get the container built in dependencies
+     * @param string key
+     * @return mixed 
+     */
     function getContainer($key = false){
 
         return $key ? $this->container[$key]($this->container) : $this->container->getContainer();
@@ -52,6 +58,8 @@ class app {
 
     /**
      * add path to routes
+     * @param string path
+     * @param function callback
      */
     public function get($path,$callback){
 
@@ -61,26 +69,12 @@ class app {
 
     /**
      * add path to routes
+     * @param string path
+     * @param function callback
      */
     public function post($path,$callback){
 
         $this->posts[$path] = ['callback' => $callback];
-
-    }
-
-    public function file($name){
-
-        ob_start();
-        include (DOCUMENT_ROOT.$name.'.php');
-        $return = ob_get_contents();
-        ob_get_clean();
-        return $return;
-
-    }
-
-    private function call(){
-
-        return $this->pathes[$this->url]($this) ?? $this->file($this->url);
 
     }
 
